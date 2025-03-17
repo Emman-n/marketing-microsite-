@@ -465,6 +465,12 @@ nav {
 /* Testimonials Slider */
 /* ======================= */
 
+.testimonial-section {
+  max-width: 1200px;  /* Same as the other sections */
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
 .testimonial-avatar {
   width: 150px;
   height: 150px;

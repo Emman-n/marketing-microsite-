@@ -299,29 +299,7 @@ body.dark-mode nav {
   transform: scale(1.05);
   box-shadow: 0 12px 24px rgba(255, 0, 102, 0.4);
 }
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .feature-card {
-    padding: 20px 10px;
-  }
-
-  .feature-card img {
-    width: 150px; /* scale down for mobile */
-  }
-
-  .feature-card h3 {
-    font-size: 1.5rem;
-  }
-
-  .feature-card p {
-    font-size: 1rem;
-  }
-}
+ 
 
 /* ======================= */
 /* Use Cases Section */
@@ -596,21 +574,7 @@ body.dark-mode nav {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Mobile: Optional hide or move arrows closer */
-@media (max-width: 768px) {
-  .testimonial-arrow {
-    display: none;
-  }
-
-  .testimonial-arrow.left {
-    left: 30%;
-  }
-
-  .testimonial-arrow.right {
-    right: 30%;
-  }
-}
-
+ 
 /* ======================= */
 /* Footer */
 /* ======================= */
@@ -643,49 +607,9 @@ footer p {
   color: #ff0066;
 }
 
-/* Mobile: Stack content vertically */
-@media (max-width: 768px) {
-  footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
-   }
-}
-
-/* ======================= */
-/* Responsive Navigation */
-/* ======================= */
-@media (max-width: 768px) {
-  .desktop-menu {
-    display: none;
-  }
-
-  .signup-container {
-    flex-direction: column;
-  }
-
-  .signup-image,
-  .signup-form-container {
-    min-width: 100%;
-  }
-
-  .signup-form-container {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .hero-text-overlay h1 {
-    font-size: 2rem;
-  }
-
-  .hero-text-overlay p {
-    font-size: 1rem;
-  }
-
-  .cta-btn {
-    padding: 12px 24px;
-  }
-}
+ 
+ 
+ 
 
 #customize {
   position: relative;
@@ -824,22 +748,7 @@ footer p {
   font-size: 1.2rem;
   line-height: 1.6;
 }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .use-case-block {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .use-case-block.reverse {
-    flex-direction: column;
-  }
-
-  .use-case-text {
-    margin-top: 20px;
-  }
-}
+ 
 
 .menu-toggle {
   display: none; /* hidden by default */
@@ -959,18 +868,7 @@ footer p {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Show on mobile screens */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-    position: absolute;
-    right: 20px;
-  }
-
-  .desktop-menu {
-    display: none;
-  }
-}
+ 
 
 #testimonials {
   padding: 60px 20px;
@@ -1162,48 +1060,120 @@ signup-text h1 {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* RESPONSIVE */
+ 
+
+
 @media (max-width: 768px) {
+  /* ======== Features Section ======== */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 20px 10px;
+  }
+
+  .feature-card img {
+    width: 150px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .feature-card p {
+    font-size: 1rem;
+  }
+
+  /* ======== Testimonials Section ======== */
+  .testimonial-arrow {
+    display: none;
+  }
+
+  /* You had conflicting arrow rules - this removes them */
+  .testimonial-arrow.left {
+    left: 30%;
+  }
+
+  .testimonial-arrow.right {
+    right: 30%;
+  }
+
+  /* ======== Footer ======== */
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  /* ======== Navigation ======== */
+  .desktop-menu {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 20px;
+  }
+
+  /* ======== Signup Section (container + form) ======== */
+  .signup-container {
+    flex-direction: column;
+  }
+
+  .signup-image,
+  .signup-form-container {
+    min-width: 100%;
+  }
+
+  .signup-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ======== Hero Section ======== */
+  .hero-text-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text-overlay p {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    padding: 12px 24px;
+  }
+
+  /* ======== Use Case Section ======== */
+  .use-case-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .use-case-block.reverse {
+    flex-direction: column;
+  }
+
+  .use-case-text {
+    margin-top: 20px;
+  }
+
+  /* ======== Signup Section (Full Page Layout) ======== */
   .signup-section {
     flex-direction: column;
     padding: 20px;
+    height: auto; /* Previously 100vh */
   }
 
   .signup-left,
   .signup-right {
-    flex: unset;
     width: 100%;
+    flex: unset;
   }
 
   .signup-left {
     height: 300px;
-  }
-
-  .signup-text h1 {
-    font-size: 2rem;
-  }
-
-  .frosted-form {
-    padding: 40px 20px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .signup-section {
-    flex-direction: column; /* Stack vertically */
-    padding: 20px;
-    height: auto; /* Stop forcing full height */
-  }
-
-  .signup-left,
-  .signup-right {
-    width: 100%;
-    flex: unset;
-  }
-
-  .signup-left {
-    height: 300px; /* Adjust as needed */
   }
 
   .signup-text {

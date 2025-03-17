@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHOKZ Headphonesss</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#hero" class="logo">
+      <img src="./images/logo.png" alt="SHOKZ Logo" class="logo-image" />
+    </a>
+    <div class="menu-toggle" id="menu-toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <ul class="desktop-menu">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#use-cases">Use Cases</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#customize">Styles</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#signup">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <ul class="mobile-menu">
+    <li><a href="#hero" onclick="closeMobileMenu()">Home</a></li>
+    <li><a href="#use-cases" onclick="closeMobileMenu()">Use Cases</a></li>
+    <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
+    <li><a href="#customize" onclick="closeMobileMenu()">Styles</a></li>
+    <li><a href="#testimonials" onclick="closeMobileMenu()">Testimonials</a></li>
+    <li><a href="#signup" onclick="closeMobileMenu()">Signup</a></li>
+  </ul>
+
+
+  <!-- Hero Section -->
+  <header id="hero">
+    <div class="hero-image-wrapper">
+      <img src="./images/hero.jpg" alt="Model wearing SHOKZ headphones" class="hero-image" loading="lazy" />
+    </div>
+    <div class="hero-text-overlay">
+      <h1>Hear the World, Feel the Music</h1>
+      <p>Experience bone conduction technology and stay aware of your surroundings.</p>
+      <button class="cta-btn" onclick="document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })">Sign Up
+        Now</button>
+    </div>
+  </header>
+
+
+
+  <!-- SHOKZ In Action Section -->
+  <section id="use-cases" class="use-cases-section">
+    <h2 class="section-title">SHOKZ In Action</h2>
+    <div class="use-case-block">
+      <div class="use-case-image">
+        <img src="./images/running.jpg" alt="Running with SHOKZ" loading="lazy" />
+      </div>
+      <div class="use-case-text">
+        <h3>Running</h3>
+        <p>Lightweight and comfortable headphones designed for long-distance runs.</p>
+      </div>
+    </div>
+
+
+    <div class="use-case-block reverse">
+      <div class="use-case-image">
+        <img src="./images/cycling.jpg" alt="Cycling with SHOKZ" loading="lazy" />
+      </div>
+      <div class="use-case-text">
+        <h3>Cycling</h3>
+        <p>Stay aware of your surroundings while cycling with SHOKZ open-ear design.</p>
+      </div>
+    </div>
+
+
+
+    <div class="use-case-block">
+      <div class="use-case-image">
+        <img src="./images/swimming.jpg" alt="Swimming with SHOKZ" loading="lazy" />
+      </div>
+      <div class="use-case-text">
+        <h3>Swimming</h3>
+        <p>Enjoy music while swimming with waterproof SHOKZ headphones.</p>
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <h2>Product Features</h2>
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <img src="./images/feature1.jpg" alt="Bone Conduction Tech" loading="lazy" />
+        <h3>Bone Conduction Tech</h3>
+        <p>Experience sound like never before with technology that lets you hear ambient sounds too.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <img src="./images/feature4.jpg" alt="Open-Ear Design" loading="lazy" />
+        <h3>Open-Ear Design</h3>
+        <p>Stay aware of your surroundings while enjoying high-quality audio.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <img src="./images/feature3.jpg" alt="Durability" loading="lazy" />
+        <h3>Durability</h3>
+        <p>Built to last with robust materials for your active lifestyle.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card">
+        <img src="./images/feature5.png" alt="Long Battery Life" loading="lazy" />
+        <h3>Long Battery Life</h3>
+        <p>Keep going with extended battery life that lasts through your day.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Color Customizer Section -->
+  <section id="customize">
+    <div class="frosted customize-section">
+      <h2>Fit Your Style</h2>
+      <p>Choose a color and see how SHOKZ headphones fit your personal style!</p>
+      <div class="color-preview">
+        <img id="headphone-image" src="./images/red.png" alt="Headphone preview" />
+      </div>
+      <div class="color-options">
+        <button onclick="changeColor('black')" aria-label="Black color"></button>
+        <button onclick="changeColor('red')" aria-label="Red color"></button>
+        <button onclick="changeColor('blue')" aria-label="Blue color"></button>
+        <button onclick="changeColor('orange')" aria-label="Orange color"></button>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonial-section">
+    <div class="frosted">
+      <h2 class="section-title">What Our Customers Say</h2>
+      <div class="testimonial-slider">
+        <div class="testimonial-slide active">
+          <img src="./images/test_Alex.jpg" alt="Alex" class="testimonial-avatar" loading="lazy" />
+          <p>"The best headphones I've ever used! Perfect for my morning runs."</p>
+          <strong>- Alex</strong>
+        </div>
+        <div class="testimonial-slide">
+          <img src="./images/test_Jamie.jpg" alt="Jamie" class="testimonial-avatar" loading="lazy" />
+          <p>"I love the open-ear design. I can listen to music without losing track of my surroundings."</p>
+          <strong>- Jamie</strong>
+        </div>
+        <div class="testimonial-slide">
+          <img src="./images/test_Taylor.jpg" alt="Taylor" class="testimonial-avatar" loading="lazy" />
+          <p>"Durable and comfortable. They fit perfectly with my active lifestyle."</p>
+          <strong>- Taylor</strong>
+        </div>
+        <button class="testimonial-arrow left" onclick="prevTestimonial()">&#10094;</button>
+        <button class="testimonial-arrow right" onclick="nextTestimonial()">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Section -->
+  <section class="signup-section" id="signup">
+    <div class="signup-left">
+      <div class="signup-text">
+        <h1>Sign Up For Exclusive Updates!</h1>
+        <p>Be the first to know about new colors & deals!</p>
+      </div>
+    </div>
+  
+    <div class="signup-right frosted-form">
+      <h2 class="signup-text h2">Sign Up</h2>
+  
+      <form id="signupForm">
+        <input type="text" id="firstName" placeholder="First Name" required />
+        <input type="text" id="country" placeholder="Country" required />
+        <input type="tel" id="phone" placeholder="Phone Number" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit" class="cta-btn">Join us →</button>
+      </form>
+  
+      <div id="form-message"></div>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 SHOKZ. All rights reserved.</p>
+
+    <div class="social-links">
+      <a href="#" aria-label="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ffffff" viewBox="0 0 24 24">
+          <path
+            d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.988H7.898v-2.89h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z" />
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ffffff" viewBox="0 0 24 24">
+          <path
+            d="M24 4.557a9.834 9.834 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337 3.1a9.864 9.864 0 0 1-3.127 1.195 4.924 4.924 0 0 0-8.384 4.482C7.688 8.41 4.066 6.8 1.64 3.872a4.922 4.922 0 0 0 1.523 6.573 4.903 4.903 0 0 1-2.23-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.928 4.928 0 0 0 4.6 3.417 9.868 9.868 0 0 1-6.102 2.104c-.395 0-.786-.023-1.17-.067a13.945 13.945 0 0 0 7.548 2.213c9.057 0 14.01-7.496 14.01-13.986 0-.213-.005-.425-.014-.637A9.936 9.936 0 0 0 24 4.557z" />
+        </svg>
+      </a>
+
+      <a href="#" aria-label="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ffffff" viewBox="0 0 24 24">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.206.056 2.003.248 2.465.415a4.92 4.92 0 0 1 1.675 1.092 4.92 4.92 0 0 1 1.092 1.675c.167.462.359 1.259.415 2.465.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.056 1.206-.248 2.003-.415 2.465a4.92 4.92 0 0 1-1.092 1.675 4.92 4.92 0 0 1-1.675 1.092c-.462.167-1.259.359-2.465.415-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.206-.056-2.003-.248-2.465-.415a4.902 4.902 0 0 1-2.767-2.767c-.167-.462-.359-1.259-.415-2.465C2.175 15.747 2.163 15.368 2.163 12s.012-3.584.07-4.85c.056-1.206.248-2.003.415-2.465a4.902 4.902 0 0 1 2.767-2.767c.462-.167 1.259-.359 2.465-.415C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.736 0 8.332.012 7.052.07 5.756.128 4.802.308 4.005.549a7.025 7.025 0 0 0-2.548 1.616A7.025 7.025 0 0 0 .549 4.005C.308 4.802.128 5.756.07 7.052.012 8.332 0 8.736 0 12c0 3.264.012 3.668.07 4.948.058 1.296.238 2.25.479 3.047a7.025 7.025 0 0 0 1.616 2.548 7.025 7.025 0 0 0 2.548 1.616c.797.241 1.751.421 3.047.479 1.28.058 1.684.07 4.948.07s3.668-.012 4.948-.07c1.296-.058 2.25-.238 3.047-.479a7.025 7.025 0 0 0 2.548-1.616 7.025 7.025 0 0 0 1.616-2.548c.241-.797.421-1.751.479-3.047.058-1.28.07-1.684.07-4.948s-.012-3.668-.07-4.948c-.058-1.296-.238-2.25-.479-3.047a7.025 7.025 0 0 0-1.616-2.548 7.025 7.025 0 0 0-2.548-1.616c-.797-.241-1.751-.421-3.047-.479C15.668.012 15.264 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+        </svg>
+      </a>
+    </div>
+
+  </footer>
+
+
+  <script src="./script.js"></script>
+</body>
+
+</html>

@@ -10,33 +10,33 @@ function highlightFeature(el) {
 }
 
 // ======== Signup Form Validation ========
-function validateForm() {
-  const name = document.getElementById('name').value.trim();
+function validateSignupForm(e) {
+  e.preventDefault();
+
+  const firstName = document.getElementById('firstName').value.trim();
   const country = document.getElementById('country').value.trim();
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('form-message');
+  const password = document.getElementById('password')?.value.trim(); // Optional
 
-  if (!name || !country || !phone || !email) {
-    message.innerText = 'Please fill out all fields!';
-    return false;
+  let errorMessage = '';
+
+  if (firstName.length < 2) errorMessage += 'First name must be at least 2 characters long.<br>';
+  if (country.length < 2) errorMessage += 'Country must be at least 2 characters long.<br>';
+  if (!/^\d{7,15}$/.test(phone)) errorMessage += 'Phone number must be 7 to 15 digits.<br>';
+  if (!/^\S+@\S+\.\S+$/.test(email)) errorMessage += 'Enter a valid email address.<br>';
+  if (password !== undefined && password.length < 6) errorMessage += 'Password must be at least 6 characters long.<br>';
+
+  const messageBox = document.getElementById('form-message');
+
+  if (errorMessage) {
+    messageBox.innerHTML = errorMessage;
+    messageBox.style.color = '#ff0066';
+  } else {
+    messageBox.innerHTML = 'Success! Form submitted.';
+    messageBox.style.color = 'limegreen';
+    document.getElementById('signupForm').reset();
   }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9\s()+-]+$/;
-
-  if (!emailRegex.test(email)) {
-    message.innerText = 'Invalid email address!';
-    return false;
-  }
-
-  if (!phoneRegex.test(phone)) {
-    message.innerText = 'Invalid phone number!';
-    return false;
-  }
-
-  message.innerText = 'Successfully signed up!';
-  return false; // Prevent submission (demo)
 }
 
 // ======== Dark Mode Toggle ========
@@ -50,21 +50,12 @@ function changeColor(color) {
   const customizeSection = document.getElementById('customize');
   const buttons = document.querySelectorAll('.color-options button');
 
-  // Clear active button highlights
-  buttons.forEach(btn => btn.classList.remove('active'));
-
-  // Activate the clicked button
   buttons.forEach(btn => {
-    if (btn.getAttribute('onclick').includes(color)) {
-      btn.classList.add('active');
-    }
+    btn.classList.toggle('active', btn.dataset.color === color);
   });
 
-  // Remove old radial classes, add the new one
-  customizeSection.className = '';
-  customizeSection.classList.add('radial-' + color);
+  customizeSection.className = `radial-${color}`;
 
-  // Fade transition for the headphone image
   headphoneImage.classList.add('color-fade');
   setTimeout(() => {
     headphoneImage.src = `./images/${color}.png`;
@@ -72,7 +63,7 @@ function changeColor(color) {
   }, 10);
 }
 
-// ======== Testimonials Functions ========
+// ======== Testimonials ========
 function showTestimonial(index) {
   testimonialSlides.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
@@ -97,42 +88,34 @@ function stopAutoSlide() {
   clearInterval(testimonialInterval);
 }
 
-// ======== Swipe Support for Mobile ========
-function addSwipeSupport() {
-  const slider = document.querySelector('.testimonial-slider');
-  let startX = 0;
-  let endX = 0;
-
-  slider.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-  });
-
-  slider.addEventListener('touchmove', (e) => {
-    endX = e.touches[0].clientX;
-  });
-
-  slider.addEventListener('touchend', () => {
-    const swipeDistance = startX - endX;
-
-    if (swipeDistance > 30) {
-      nextTestimonial(); // Swipe left → Next
-      stopAutoSlide(); 
-      startAutoSlide(); 
-    } else if (swipeDistance < -30) {
-      prevTestimonial(); // Swipe right → Previous
-      stopAutoSlide(); 
-      startAutoSlide(); 
-    }
-  });
-}
-
-// ======== Restart Auto Slide ========
 function resetAutoSlide() {
   stopAutoSlide();
   startAutoSlide();
 }
 
-// ======== Use Case Blocks Animation ========
+// ======== Swipe Support ========
+function addSwipeSupport() {
+  const slider = document.querySelector('.testimonial-slider');
+  let startX = 0;
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener('touchend', (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const swipeDistance = startX - endX;
+
+    if (swipeDistance > 30) {
+      nextTestimonial();
+    } else if (swipeDistance < -30) {
+      prevTestimonial();
+    }
+    resetAutoSlide();
+  });
+}
+
+// ======== Use Case Animation ========
 function animateUseCases() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -141,121 +124,43 @@ function animateUseCases() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.2 });
 
   document.querySelectorAll('.use-case-block').forEach(block => observer.observe(block));
 }
 
-// ======== Init Everything ========
-window.addEventListener('DOMContentLoaded', () => {
-  // Testimonials
-  showTestimonial(currentTestimonial);
-  startAutoSlide();
+// ======== Mobile Menu ========
+function initMobileMenu() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-  // Arrows click restart auto-slide
-  document.querySelectorAll('.testimonial-arrow').forEach(arrow => {
-    arrow.addEventListener('click', () => {
-      resetAutoSlide();
-    });
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
   });
-
-  addSwipeSupport();
-  animateUseCases();
-});
-
-
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
-});
-
+}
 
 function closeMobileMenu() {
   const menu = document.querySelector('.mobile-menu');
-  menu.classList.remove('active'); // Or whatever class you toggle to show the menu
+  menu.classList.remove('active');
 }
 
-document.querySelector('.menu-toggle').addEventListener('click', () => {
-  document.querySelector('.mobile-menu').classList.toggle('active');
-});
-
-
-window.addEventListener('DOMContentLoaded', () => {
+// ======== Init ========
+function init() {
   showTestimonial(currentTestimonial);
   startAutoSlide();
-  addSwipeSupport(); 
-});
+  addSwipeSupport();
+  animateUseCases();
+  initMobileMenu();
 
-
-
-function animateUseCases() {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // stops watching after it's visible
-      }
-    });
-  }, { threshold: 0.2 }); // adjust threshold if needed
-
-  document.querySelectorAll('.use-case-block').forEach(block => {
-    observer.observe(block);
+  document.querySelectorAll('.testimonial-arrow').forEach(arrow => {
+    arrow.addEventListener('click', resetAutoSlide);
   });
+
+  const signupForm = document.getElementById('signupForm');
+  if (signupForm) {
+    signupForm.addEventListener('submit', validateSignupForm);
+  }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  animateUseCases();
-});
-
-
-document.getElementById('signupForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Stop the form from submitting
-
-  // Grab field values
-  const firstName = document.getElementById('firstName').value.trim();
-  const country = document.getElementById('country').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value.trim();
-
-  let errorMessage = '';
-
-  // Validation Rules
-  if (firstName.length < 2) {
-    errorMessage += 'First name must be at least 2 characters long.<br>';
-  }
-
-  if (country.length < 2) {
-    errorMessage += 'Country must be at least 2 characters long.<br>';
-  }
-
-  if (!/^\d{7,15}$/.test(phone)) {
-    errorMessage += 'Phone number must be 7 to 15 digits.<br>';
-  }
-
-  if (!/^\S+@\S+\.\S+$/.test(email)) {
-    errorMessage += 'Enter a valid email address.<br>';
-  }
-
-  if (password.length < 6) {
-    errorMessage += 'Password must be at least 6 characters long.<br>';
-  }
-
-  const messageBox = document.getElementById('form-message');
-
-  if (errorMessage) {
-    messageBox.innerHTML = errorMessage;
-    messageBox.style.color = '#ff0066';
-  } else {
-    messageBox.innerHTML = 'Success! Form submitted.';
-    messageBox.style.color = 'limegreen';
-
-    // Optional: clear the form
-    document.getElementById('signupForm').reset();
-
-    // Proceed to submit data via AJAX or other method if needed
-  }
-});
+window.addEventListener('DOMContentLoaded', init);

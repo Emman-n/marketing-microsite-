@@ -1071,8 +1071,15 @@ signup-text h1 {
 }
 
 .frosted-form input[type="text"],
+.frosted-form input[type="tel"],
 .frosted-form input[type="email"],
 .frosted-form input[type="password"] {
+  display: block;
+  width: 100%; /* make sure */
+  box-sizing: border-box;
+}
+
+.frosted-form input {
   padding: 15px;
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1080,6 +1087,7 @@ signup-text h1 {
   color: #fff;
   font-size: 1rem;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .frosted-form input::placeholder {

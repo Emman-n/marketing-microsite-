@@ -1,7 +1,7 @@
 SHOKZ Interactive Product Microsite
 
 Project Overview:
-This is a one-page interactive marketing microsite built for the SHOKZ product launch. It highlights SHOKZ’s bone conduction headphones with an engaging, responsive design and interactive elements.
+- This is a one-page interactive marketing microsite built for the SHOKZ product launch. It highlights SHOKZ’s bone conduction headphones with an engaging, responsive design and interactive elements.
 
 Features:
   - Header with logo and navigation links.

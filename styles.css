@@ -28,7 +28,7 @@ nav {
   top: 10px;
   left: 20px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.211); /* <<< dark glass */
+  background: rgba(0, 0, 0, 0.211);  
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 10px 20px;
@@ -52,7 +52,7 @@ nav {
 }
 
 .desktop-menu a:hover {
-  color: #ff0066; /* Bright accent color */
+  color: #ff0066;  
 }
 
 .desktop-menu a.active {
@@ -75,7 +75,7 @@ nav {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url("./images/hero.jpg"); /* Replace with your path */
+  background-image: url("./images/hero.jpg");  
   background-size: cover;
   background-position: center;
   display: flex;
@@ -245,10 +245,9 @@ nav {
 
 /* Image Styling - BIGGER */
 .feature-card img {
-  width: 180px; /* was 120px */
+  width: 180px;  
   height: auto;
-  margin-bottom: 25px; /* more breathing room */
-  border-radius: 12px;
+  margin-bottom: 25px; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
@@ -256,7 +255,7 @@ nav {
 .feature-card h3 {
   margin-bottom: 15px;
   color: #ff0066;
-  font-size: 1.8rem; /* slightly bigger to balance image */
+  font-size: 1.8rem;  
 }
 
 /* Card Text */
@@ -466,7 +465,7 @@ nav {
 /* ======================= */
 
 .testimonial-section {
-  max-width: 1200px;  /* Same as the other sections */
+  max-width: 1200px;  
   margin: 0 auto;
   padding: 60px 20px;
 }
@@ -585,8 +584,6 @@ footer p {
   color: #ff0066;
 }
 
- 
- 
  
 
 #customize {
@@ -729,13 +726,13 @@ footer p {
  
 
 .menu-toggle {
-  display: none; /* hidden by default */
+  display: none; 
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
   height: 25px;
   cursor: pointer;
-  z-index: 1100; /* higher than menu */
+  z-index: 1100;  
 }
 
 .menu-toggle .bar {
@@ -951,7 +948,7 @@ signup-text h1 {
 .frosted-form input[type="email"],
 .frosted-form input[type="password"] {
   display: block;
-  width: 100%; /* make sure */
+  width: 100%;  
   box-sizing: border-box;
 }
 
@@ -1068,8 +1065,7 @@ signup-text h1 {
     display: none;
   }
 
-  /* You had conflicting arrow rules - this removes them */
-  .testimonial-arrow.left {
+   .testimonial-arrow.left {
     left: 30%;
   }
 
@@ -1141,7 +1137,7 @@ signup-text h1 {
   .signup-section {
     flex-direction: column;
     padding: 20px;
-    height: auto; /* Previously 100vh */
+    height: auto;  
   }
 
   .signup-left,

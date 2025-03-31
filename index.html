@@ -52,13 +52,14 @@
       <h1>Hear the World, Feel the Music</h1>
       <p>Experience bone conduction technology and stay aware of your surroundings.</p>
       <button class="cta-btn" onclick="document.getElementById('signup').scrollIntoView({ behavior: 'smooth' })">Sign Up
-        Now</button>
+        Now
+      </button>
     </div>
   </header>
 
 
 
-  <!-- SHOKZ In Action Section -->
+  <!-- SHOKZ In Action Section --> 
   <section id="use-cases" class="use-cases-section">
     <h2 class="section-title">SHOKZ In Action</h2>
     <div class="use-case-block">
@@ -136,7 +137,7 @@
 
 
 
-  <!-- Color Customizer Section -->
+  <!-- Color Customize Section -->
   <section id="customize">
     <div class="frosted customize-section">
       <h2>Fit Your Style</h2>
@@ -145,10 +146,10 @@
         <img id="headphone-image" src="./images/red.png" alt="Headphone preview" />
       </div>
       <div class="color-options">
-        <button onclick="changeColor('black')" aria-label="Black color"></button>
-        <button onclick="changeColor('red')" aria-label="Red color"></button>
-        <button onclick="changeColor('blue')" aria-label="Blue color"></button>
-        <button onclick="changeColor('orange')" aria-label="Orange color"></button>
+        <button data-color="black" onclick="changeColor('black')" aria-label="Black color"></button>
+        <button data-color="red" onclick="changeColor('red')" aria-label="Red color"></button>
+        <button data-color="blue" onclick="changeColor('blue')" aria-label="Blue color"></button>
+        <button data-color="orange" onclick="changeColor('orange')" aria-label="Orange color"></button>
       </div>
     </div>
   </section>
@@ -198,7 +199,6 @@
         <input type="text" id="country" placeholder="Country" required />
         <input type="tel" id="phone" placeholder="Phone Number" required />
         <input type="email" id="email" placeholder="Email Address" required />
-        <input type="password" id="password" placeholder="Password" required />
         <button type="submit" class="cta-btn">Sign Up</button>
       </form>
 

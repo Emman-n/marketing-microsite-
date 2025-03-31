@@ -3,66 +3,17 @@ let currentTestimonial = 0;
 let testimonialInterval;
 const testimonialSlides = document.querySelectorAll('.testimonial-slide');
 
-// ======== Features ========
-function highlightFeature(el) {
-  document.querySelectorAll('.feature').forEach(f => f.classList.remove('active-feature'));
-  el.classList.add('active-feature');
-}
-
-// ======== Signup Form Validation ========
-function validateSignupForm(e) {
-  e.preventDefault();
-
-  const firstName = document.getElementById('firstName').value.trim();
-  const country = document.getElementById('country').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password')?.value.trim(); // Optional
-
-  let errorMessage = '';
-
-  if (firstName.length < 2) errorMessage += 'First name must be at least 2 characters long.<br>';
-  if (country.length < 2) errorMessage += 'Country must be at least 2 characters long.<br>';
-  if (!/^\d{7,15}$/.test(phone)) errorMessage += 'Phone number must be 7 to 15 digits.<br>';
-  if (!/^\S+@\S+\.\S+$/.test(email)) errorMessage += 'Enter a valid email address.<br>';
-  if (password !== undefined && password.length < 6) errorMessage += 'Password must be at least 6 characters long.<br>';
-
-  const messageBox = document.getElementById('form-message');
-
-  if (errorMessage) {
-    messageBox.innerHTML = errorMessage;
-    messageBox.style.color = '#ff0066';
-  } else {
-    messageBox.innerHTML = 'Success! Form submitted.';
-    messageBox.style.color = 'limegreen';
-    document.getElementById('signupForm').reset();
-  }
-}
-
-// ======== Dark Mode Toggle ========
-function toggleDarkMode() {
-  document.body.classList.toggle('dark-mode');
-}
 
 // ======== Color Changer ========
 function changeColor(color) {
   const headphoneImage = document.getElementById('headphone-image');
   const customizeSection = document.getElementById('customize');
-  const buttons = document.querySelectorAll('.color-options button');
-
-  buttons.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.color === color);
-  });
 
   customizeSection.className = `radial-${color}`;
-
   headphoneImage.classList.add('color-fade');
-  setTimeout(() => {
-    headphoneImage.src = `./images/${color}.png`;
-    headphoneImage.classList.remove('color-fade');
-  }, 10);
+  headphoneImage.src = `./images/${color}.png`;
 }
-
+ 
 // ======== Testimonials ========
 function showTestimonial(index) {
   testimonialSlides.forEach((slide, i) => {
@@ -81,7 +32,7 @@ function prevTestimonial() {
 }
 
 function startAutoSlide() {
-  testimonialInterval = setInterval(nextTestimonial, 5000);
+  testimonialInterval = setInterval(nextTestimonial, 8000);
 }
 
 function stopAutoSlide() {
@@ -145,6 +96,38 @@ function closeMobileMenu() {
   menu.classList.remove('active');
 }
 
+
+
+// ======== Signup Form Validation ========
+function validateSignupForm(e) {
+  e.preventDefault();
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const country = document.getElementById('country').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password')?.value.trim();  
+
+  let errorMessage = '';
+
+  if (firstName.length < 2) errorMessage += 'First name must be at least 2 characters long.<br>';
+  if (country.length < 2) errorMessage += 'Country must be at least 2 characters long.<br>';
+  if (!/^\d{7,15}$/.test(phone)) errorMessage += 'Phone number must be 7 to 15 digits.<br>';
+  if (!/^\S+@\S+\.\S+$/.test(email)) errorMessage += 'Enter a valid email address.<br>';
+
+  const messageBox = document.getElementById('form-message');
+
+  if (errorMessage) {
+    messageBox.innerHTML = errorMessage;
+    messageBox.style.color = '#ff0066';
+  } else {
+    messageBox.innerHTML = 'Success! Form submitted.';
+    messageBox.style.color = 'limegreen';
+    document.getElementById('signupForm').reset();
+  }
+}
+ 
+
 // ======== Init ========
 function init() {
   showTestimonial(currentTestimonial);
@@ -162,5 +145,9 @@ function init() {
     signupForm.addEventListener('submit', validateSignupForm);
   }
 }
+
+
+
+
 
 window.addEventListener('DOMContentLoaded', init);
